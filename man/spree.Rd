@@ -21,7 +21,7 @@ spree(population_domains,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{population_data}{a data frame that with exactly same size as \code{sample_data} (A rows and J columns). It contains also \code{population_domains}, \code{row_margins}, and \code{col_margins}.}
+\item{population_data}{a data frame that with exactly same size as \code{sample_data} (A rows and J columns). It contains also \code{population_domains}, \code{row_margins}, and \code{col_margins}. No NAs are allowed. If this file contains zeros, they are treated as structural zeros, so they will remain as zeros in the output.}
 
 \item{sample_data}{a data frame that with exactly same size as \code{population_data}. (A rows and J columns). It contains also \code{population_domains},\code{row_margins}, and \code{col_margins}.}
 
@@ -47,7 +47,8 @@ are selected, a design effect for the column totals can be provided. A
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+For GSPREE Poisson likelihood is used to obtain Maximum Likelihood estimates of the beta coefficient. This option can be also set for MSPREE when specifying ‘ML’ in \code{method}. As an alternative for the MSPSREE, Iterative Weighted Least Squares can be implemented. In this case, a variance estimate is required which is obtain using simple random samplig without replacement and multiplying it by a design effect.
+For MSE estimation, a parametric bootstrap is implemented. Population compositions are repeatedly generated from a multinomial distribution.
 }
 \value{
 An object of class "spree", with the updated population counts and respective uncertainty measures.
