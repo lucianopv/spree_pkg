@@ -12,18 +12,14 @@ f.predict.SPREE(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{fitted} {This is an output from f.fit.SPREE. Brings information of the type of estimator implemented ("spree","gspree","mspree") and estimated coefficients, among others.}
-\item{new.proxy} {Optional argument. If provided, estimates will be obtained updating the association structure of this table with the coefficients estimated in the previous step. This is useful when the set of areas used for fitting the model is different from the set of areas for which predictions are required. For instance, when there are out-of-sample areas (those are eliminated from the estimation step but it would be possible to obtain predictions if there is proxy information for them). If NULL, estimates will be obtained updating the association structure of the proxy table provided in f.fit.SPREE.}
-\item{row.margin} {Required. This is a vector containing the totals for the same set of areas (and in the same order) as those in the proxy data (either the proxy provided in f.fit.SPREE or new.proxy). Estimates will satisfy this row margin.}
-\item{col.margin} {Optional. This is a vector of J columns containing the totals aggregating over all areas. If provided, estimates will satisfy this column margin.}
-
+\item{fitted}{This is an output from f.fit.SPREE. Brings information of the type of estimator implemented ("spree","gspree","mspree") and estimated coefficients, among others.}
+\item{new.proxy}{Optional argument. If provided, estimates will be obtained updating the association structure of this table with the coefficients estimated in the previous step. This is useful when the set of areas used for fitting the model is different from the set of areas for which predictions are required. For instance, when there are out-of-sample areas (those are eliminated from the estimation step but it would be possible to obtain predictions if there is proxy information for them). If NULL, estimates will be obtained updating the association structure of the proxy table provided in f.fit.SPREE.}
+\item{row.margin}{Required. This is a vector containing the totals for the same set of areas (and in the same order) as those in the proxy data (either the proxy provided in f.fit.SPREE or new.proxy). Estimates will satisfy this row margin.}
+\item{col.margin}{Optional. This is a vector of J columns containing the totals aggregating over all areas. If provided, estimates will satisfy this column margin.}
 }
 \details{
-
 - fitted must be  a valid output from f.fit.SPREE.
-
 - if new.proxy is provided, it will only contain the relevant counts (no domain identifier), with the columns representing the same categories and in the same order as in the proxy and survey data used in argument fitted. The set of areas may differ from that used in the fitted argument. Cannot contain zeroes, NAs or negative values. Zeroes in the proxy table can be substituted by a small count (e.g., 3) prior to using this function.
-
 - row.margin and col.margin are vectors of a dimension compatible with the proxy that will be used to obtain estimates. Neither can contain zeroes, NAs or negative values.
 - the sum of row.margin and col.margin (if provided) must be exactly the same. }
 \value{
