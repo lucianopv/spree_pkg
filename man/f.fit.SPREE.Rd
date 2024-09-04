@@ -130,12 +130,12 @@ ctotals_12 <- column_tot_new(data_true= survey_12, domains = "Canton", total_tru
 
 # SPREE estimates
 
-SPREE doesn't require the estimation of a coefficient. However, to make the treatment analogous to that of GSPREE and MSPREE, we also require a f.fit.SPREE step. method has no effect in this case.
+#SPREE doesn't require the estimation of a coefficient. However, to make #the treatment analogous to that of GSPREE and MSPREE, we also require a #f.fit.SPREE step. method has no effect in this case.
 
 res1 <- f.fit.SPREE(proxy=old.proxy, survey=survey.data,
                     estimator="spree", method="ml")
 
 res1
 
-SPREE estimates for the same proxy as in res. Only row margins are used. }
+#SPREE estimates for the same proxy as in res. Only row margins are used. }
 }
