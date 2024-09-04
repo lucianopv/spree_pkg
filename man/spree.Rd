@@ -45,7 +45,7 @@ the beta coefficient. This  argument is only required when \code{type} =
 are selected, a design effect for the column totals can be provided. A
  vector containing 1’s is used as default.}
 }
-}
+
 \details{
 For GSPREE Poisson likelihood is used to obtain Maximum Likelihood estimates of the beta coefficient. This option can be also set for MSPREE when specifying ‘ML’ in \code{method}. As an alternative for the MSPSREE, Iterative Weighted Least Squares can be implemented. In this case, a variance estimate is required which is obtain using simple random samplig without replacement and multiplying it by a design effect.
 For MSE estimation, a parametric bootstrap is implemented. Population compositions are repeatedly generated from a multinomial distribution.
