@@ -138,3 +138,4 @@ res1 <- f.fit.SPREE(proxy=old.proxy, survey=survey.data,
 res1
 
 SPREE estimates for the same proxy as in res. Only row margins are used. }
+}
