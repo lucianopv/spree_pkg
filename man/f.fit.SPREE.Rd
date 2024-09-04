@@ -18,15 +18,10 @@ f.fit.SPREE(proxy,
 \arguments{
   \item{proxy}{a data frame that with exactly same size as \code{sample_data} (A rows and J columns). It contains also \code{population_domains}, \code{row_margins}, and \code{col_margins}. No NAs are allowed. If this file contains zeros, they are treated as structural zeros, so they will remain as zeros in the output.}
 \item{survey} {This is the AxJ table obtained from the survey data. It is **not** required if estimator is "spree". If method is "ml", survey contains the observed survey counts in each category. If method is "iwls", survey contains the estimated population counts using the expansion factors. Please notice that when iwls is used, the survey table is internally transformed to the within-area proportions, so the expansion factors will only affect the estimate if the sampling design is *informative*, in the sense that the estimated within-area proportions are different from the observed within-area proportions in the sample.}
-
 \item{estimator} {Can take the values "spree" (no update of structure),"gspree" (one coefficient) or "mspree" (J-1xJ-1 independent coefficients).}
-
 \item{method} {Can take the values "ml" for Maximum Likelihood (Poisson or Multinomial are equivalent) or  "iwls" for Iterative Weighted Least Squares. ML estimates are obtained using the observed sample counts and assuming a Poisson/Multinomial distribution (both are equivalent). IWLS estimates are obtained using estimated counts obtained with sampling weights, and allow for the specification of category-specific design effects.}
-
 \item{iwls.opt} {This is a list containing the additional elements required for method "iwls". Has components nsa. (vector of realized area sample sizes), ini.prop (AxJ matrix of within-area proportions which will be used to initialize the algorithm), and deff (vector of size J containing column-specific design effects. If missing, it is set to 1).}
-
 %%     ~~Describe \code{x} here~~
-}
 }
 \details{
 - The tables proxy and survey only contain the relevant counts. No variable identifying the domains is included in either table.
@@ -47,11 +42,8 @@ An object of class "f.fit.SPREE", with:
 \item{coeff} {Estimated coefficients. When estimator is "spree", it takes the value 1. When estimator is "gspree" is one constant. When estimator is "mspree" it is a list with two matrices of coefficients: beta (JxJ matrix of coefficients summing 1 by row and column) and Bp (reparametrization as in eq. 2.19, where the diagonal elements are free and the off-diagonal sum zero by row and column).}
 
 \item{var.coeff} {Estimated variance of the coefficients.}
-
 \item{proxy} {Copy of the proxy argument.}
-
 \item{estimator} {Copy of the estimator argument.}
-
 \item{proxy.alpha.aj} {Log-linear representation of the proxy table.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use

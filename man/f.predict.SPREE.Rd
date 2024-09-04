@@ -13,11 +13,8 @@ f.predict.SPREE(x)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 \item{fitted} {This is an output from f.fit.SPREE. Brings information of the type of estimator implemented ("spree","gspree","mspree") and estimated coefficients, among others.}
-
 \item{new.proxy} {Optional argument. If provided, estimates will be obtained updating the association structure of this table with the coefficients estimated in the previous step. This is useful when the set of areas used for fitting the model is different from the set of areas for which predictions are required. For instance, when there are out-of-sample areas (those are eliminated from the estimation step but it would be possible to obtain predictions if there is proxy information for them). If NULL, estimates will be obtained updating the association structure of the proxy table provided in f.fit.SPREE.}
-
 \item{row.margin} {Required. This is a vector containing the totals for the same set of areas (and in the same order) as those in the proxy data (either the proxy provided in f.fit.SPREE or new.proxy). Estimates will satisfy this row margin.}
-
 \item{col.margin} {Optional. This is a vector of J columns containing the totals aggregating over all areas. If provided, estimates will satisfy this column margin.}
 
 }

@@ -110,3 +110,4 @@ summary(MSPREE_IWLS_17$updated_point)
 # Plots to compare methods
 plots_spree<- compare_spree(SPREE_17,MSPREE_IWLS_17, GSPREE_17, MSPREE_ML_17)
 }
+}
