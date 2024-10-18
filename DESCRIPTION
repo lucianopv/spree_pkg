@@ -1,4 +1,4 @@
-Package: spree
+Package: spreeLPV
 Type: Package
 Title: Structure PREserving Estimators (SPREE)
 Version: 0.2.0
