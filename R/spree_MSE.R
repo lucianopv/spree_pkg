@@ -12,9 +12,9 @@ mse_spree<- function(YS,
                      design_effect,
                      B = 100){
 
-  YS<-as.matrix(YS)
-  MSE_b<-array(dim=c(AJ,B))
-  updated_YS_true<- matrix(YS, AJ, byrow = F)
+  YS <- as.matrix(YS)
+  MSE_b <- array(dim=c(AJ,B))
+  updated_YS_true <- matrix(YS, AJ, byrow = F)
   MSE<-rep(0,AJ)
 
   for(b in 1:B){
@@ -25,14 +25,16 @@ mse_spree<- function(YS,
     theta_p <- loglin(outer(Ya.,Y.j)/sum(Ya.),margin=list(1,2),
                       start=YS, fit=TRUE, eps=1.e-05, iter=100)$fit
 
-    pi_p<- theta_p/rowSums(theta_p)
+    pi_p <- theta_p/rowSums(theta_p)
 
     na<- round((sum(popul_data)/sum(sampl_data))*Ya.,0)
 
     #population
     X_p <- NULL
     for (a in 1:A){
-      set.seed(32*a+b*41);X_p <- cbind(X_p,(rmultinom(1,Ya.[a],pi_p[a,])));}
+      set.seed(32*a+b*41)
+      X_p <- cbind(X_p,(rmultinom(1, Ya.[a], pi_p[a,])))
+    }
     X_p <- t(X_p)
     X_p <- loglin(outer(Ya.,Y.j)/sum(Ya.),margin=list(1,2),
                   start=X_p, fit=TRUE, eps=1.e-05, iter=100)$fit
@@ -41,7 +43,9 @@ mse_spree<- function(YS,
     #sample
     y_s <- NULL
     for (a in 1:A){
-      set.seed(8*a+b*37); y_s <- cbind(y_s,(rmultinom(1, na[a], theta_s[a,])));}
+      set.seed(8*a+b*37)
+      y_s <- cbind(y_s,(rmultinom(1, na[a], theta_s[a,])))
+    }
     #here sample scenario
     y_s <- t(y_s)
 
@@ -51,7 +55,7 @@ mse_spree<- function(YS,
 
     #Obtener la matriz con las interacciones del censo
 
-    alpha.Xp <- as.matrix(f.LLRep(X_p)$alpha_aj)
+    alpha.Xp <- as.matrix(f.LLRep(X_p, A, J)$alpha_aj)
 
 
     # ID columns y rows
@@ -87,7 +91,7 @@ mse_spree<- function(YS,
 
     MSE_b[,b]<-c(YS_mse)
 
-    }else if(type== "GSPREE"){
+    } else if(type== "GSPREE") {
 
 
     #gspree
@@ -100,12 +104,12 @@ mse_spree<- function(YS,
 
     MSE_b[,b]<-c(YS_mse)
 
-    }else if(type== "MSPREE"){
+    } else if(type== "MSPREE") {
     #mspree
 
     if( method == "ML") {
 
-      if(ncol(y_s)<3){
+      if(ncol(y_s)<3) {
         warning("GSPREE is applied because there are only two categories.")
       }
 
@@ -115,7 +119,7 @@ mse_spree<- function(YS,
 
       MSE_b[,b]<-c(YS_mse)
 
-    }else if(method == "IWLS"){
+    } else if(method == "IWLS") {
 
         if(is.null(design_effect)){
           design_effect<-c(rep(1,J))
