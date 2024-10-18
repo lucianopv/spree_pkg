@@ -152,7 +152,7 @@ spree<- function(population_domains,
 
   #Get population matrix
 
-  alpha.Xaj.X <- as.matrix(f.LLRep(Xaj)$alpha_aj)
+  alpha.Xaj.X <- as.matrix(f.LLRep(Xaj, A, J)$alpha_aj)
 
 
   # ID columns y rows
